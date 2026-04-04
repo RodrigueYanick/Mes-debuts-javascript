@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        class Student {
+            #notes = [];
+            ecole = 'ENSA';
+
+            constructor(firstName, lastName){
+                this.firstName = firstName;
+                this.lastName = lastName
+            }
+
+            set notes(v) {
+                if (Array.isArray(v)) {
+                    this.#notes = v;
+                }
+            }
+
+            get name() {
+                return `${this.firstName} ${this.lastName}`;
+            }
+
+            role_of_honor(){
+                return moyenne(this.#notes) > 14 ? `${this.firstName} ${this.lastName} is in the role of honor` : `\n${this.firstName} ${this.lastName} is not in the role of honor`;
+            }
+
+            static moyenne = 10
+
+        }
+
+        class SuperStudent extends Student {
+            #notes = [];
+            constructor(firstName, lastName, notes){
+                super(firstName, lastName);
+                this.#notes = notes;
+            }
+
+            get name() {
+                return `super ${super.name}`;
+            }
+
+            canPass() {
+                return true
+            }
+
+            get notes() {
+                return this.#notes;
+            }
+        }
+        
+        const student1 = new SuperStudent('Yassine', 'El Amrani', [13, 15, 18]);
+        const student2 = new Student('Jamal', 'Safi');
+        
+        student2.notes = 85;
+        console.log(student1.name, student2.role_of_honor());
+        console.log(Student.moyenne);
+
+        function moyenne(notes = []) {
+            let sum = 0
+            for(note of notes){
+                sum+=note
+            }
+            return sum / notes.length;
+        }
+        
+    </script>
+</body>
+</html>
