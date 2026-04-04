@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <script>
+        const phrase = `Lorem ipsum dolor sit amet consectetur dolor adipisicing elit. Voluptas, voluptate.`;
+        phrase.toLocaleLowerCase();
+        const words = phrase.split(' ');
+        const frequencies = [];
+        for(word of words) {
+            
+            let occurence = words.filter(w => w === word).length;
+            frequencies.push({ word, occurence });
+            console.log(`${word} : ${occurence}`);
+        }
+        console.log(frequencies.sort((a, b) => b.occurence - a.occurence));
+    </script>
+</body>
+</html>
