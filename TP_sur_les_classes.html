@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+        class Rectangle {
+    
+            constructor(largeur, hauteur) {
+                this.largeur = largeur;
+                this.hauteur = hauteur;
+            }
+    
+            get perimetre () {
+                return 2*(this.largeur+this.hauteur);
+            }
+    
+            get isValide() {
+                return this.largeur > 0 && this.hauteur > 0;
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(cote) {
+                super(cote, cote);
+            }
+
+            get perimetre() {
+                return super.perimetre;
+            }
+
+            get isValide() {
+                return super.isValide();
+            }
+
+            isBiggerThan(rectangle) {
+                return this.perimetre > rectangle.perimetre;
+            }
+        }
+
+        const r = new Rectangle(10, 20);
+        console.log(r.perimetre);
+        console.log(r.isValide);
+        const r2 = new Rectangle(-10, 20);
+        console.log(r2.isValide);
+        const c = new Square(10);
+        console.log(c.perimetre);
+        console.log(c.isBiggerThan(r));
+*/
+
+
+        class Livre {
+
+            #page = 1;
+
+            constructor(titre, nbPages) {
+                this.titre = titre;
+                this.nbPages = nbPages;
+            }
+
+            nextPage() {
+                if(this.#page < this.nbpages) {
+                    this.#page++;
+                }
+            }
+
+            get numberPage() {
+                return this.#page;
+            }
+
+            clossLivre() {
+                this.#page = 1; 
+            }
+
+        }
+
+        class Library extends Livre {
+
+            #books = []
+
+            addBook(book) {
+                this.#books.push(book);
+            }
+
+            addBooks(books) {
+                books.forEach(this.addBook, this);
+            }
+
+            findBook(letter) {
+                return this.#books.filter((book) => book.titre[0].toLowerCase() === letter.toLowerCase());
+            }
+
+             get numberOfBooks() {
+                return this.#books.length;
+             }
+        }
+
+        const b = new Livre('Seigneur des anneaux', 1000);
+        console.log(b.numberPage);
+        b.nextPage();
+        console.log(b.numberPage);  
+        b.clossLivre();
+        console.log(b.numberPage);
+
+        const lib = new Library();
+        lib.addBook(b);
+        lib.addBooks([
+            new Livre('Harry Potter', 500),
+            new Livre('Le petit prince', 200),
+            new Livre('Le seigneur des anneaux', 1000)
+        ]);
+        console.log(lib.findBook('l'));
+
+    </script>
+</body>
+</html>
