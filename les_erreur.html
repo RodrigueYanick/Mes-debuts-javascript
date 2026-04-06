@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Rectangle {
+    
+            constructor(largeur, hauteur) {
+                if (largeur <= 0 || hauteur <= 0) {
+                    throw new Error('La largeur et la hauteur doivent être des nombres positifs.');
+                }
+                this.largeur = largeur;
+                this.hauteur = hauteur;
+            }
+    
+            get perimetre () {
+                return 2*(this.largeur+this.hauteur);
+            }
+    
+            get isValide() {
+                return this.largeur > 0 && this.hauteur > 0;
+            }
+        }
+
+
+        class PromptError extends Error {
+
+        }
+
+        function createRectangle() {
+            try {
+                const width = parseInt(prompt('Entrez la largeur du rectangle :'), 10);
+                const height = parseInt(prompt('Entrez la hauteur du rectangle :'), 10);
+                const r = new Rectangle(width, height);
+                return r;
+            }catch (e) {
+                throw new Error('Erreur lors de la création du rectangle : ', {cause: {code: 404, url: 'http://example.com/rectangle'}});
+            }
+        }
+
+        try {
+            createRectangle();
+        } catch (e) {
+            if (e instanceof PromptError) {
+                console.log('PromptError')
+            } else {
+                console.log('erreur classique')
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
