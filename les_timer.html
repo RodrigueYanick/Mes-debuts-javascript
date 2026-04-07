@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function wait(duration) {
+            const t = Date.now();
+            while (Date.now - t < duration) {
+
+            }
+        }
+
+        // console.log('Bonjour');
+        // // wait(5000);
+        // setTimeout(() => {
+        //     console.log('les gens');
+        // }, 5000);
+        // console.log('Au revoir');
+
+        let count = 0;
+        console.log('Bonsoir');
+        const t = setInterval(() => {
+            console.log('les gens')
+            count++;
+            if (count === 5) {
+                clearInterval(t);
+            }
+        }, 1000);
+        console.log(t)
+
+        function decompte(count) {
+            console.log('Bonjour le monde');
+            const t = setInterval(() => {
+                console.log('cava ?');
+                count--;
+                if (count === 0) {
+                    clearInterval(t);
+                }
+            }, 1000);
+            return t;
+        }
+        decompte(5);
+    </script>
+</body>
+</html>
