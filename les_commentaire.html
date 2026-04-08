@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const MONTHS = 'months'
+        const DAYS = 'days'
+        const YEARS = 'years'
+
+        function addInterval (date, n, unit) {
+            switch (unit) {
+                case MONTHS:
+                    date.setMonth(date.getmonth() + n);
+                    break;
+                case DAYS:
+                    date.setDate(date.getDate() + n);
+                    break;
+                case YEARS:
+                    date.fullYear(date.getFullYear() + n);
+                    break;
+                default:
+                    throw new Error('Invalid unit');
+            }
+            return date;
+        }
+
+        function addDays (date, days) {
+          date.setDate(date.getDate() + days);
+          return date;
+        }
+
+        const today = new Date();
+        const future = addInterval(today, 3, MONTHS);
+        console.log(today);
+        console.log(future);
+    </script>
+</body>
+</html>
